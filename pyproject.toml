@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-desk"
-version = "0.1.0"
+version = "0.2.0"
 description = "Source-grounded research briefs with SQLite retrieval and optional LLM generation"
 requires-python = ">=3.11"
-dependencies = ["fastapi==0.115.6", "uvicorn==0.34.0", "httpx==0.28.1", "pydantic==2.10.4"]
+dependencies = ["fastapi==0.115.6", "uvicorn==0.34.0", "httpx==0.28.1", "pydantic==2.10.4", "pypdf==7.0.1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]

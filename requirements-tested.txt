@@ -1,5 +1,6 @@
 # Tested local Python 3.13 stack. Install after pip install -e ".[dev]" for an exact validation environment.
 fastapi==0.115.6
+pypdf==7.0.1
 uvicorn==0.34.0
 httpx==0.28.1
 pytest==9.2.0

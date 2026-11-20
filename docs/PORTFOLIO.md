@@ -1,19 +1,16 @@
-# Discussing EvidenceDesk in an interview
+# Portfolio explanation
 
-## CV description
+## Suggested CV bullet
 
-**EvidenceDesk — source-grounded research assistant.** Built a Python/FastAPI application that imports public web documentation, persists provenance and overlapping chunks in SQLite, ranks evidence with FTS5/BM25, and returns cited briefs. Added an optional LLM generation adapter, citation validation and fallback behavior, a browser interface, Docker packaging and automated tests.
+**EvidenceDesk — Bank Report RAG:** Built a Python/FastAPI research app that indexes public bank-results PDFs in SQLite FTS5, preserves page-level provenance and supports filtered retrieval, cross-bank evidence comparison and optional LLM answers with citation validation; packaged with Docker, CI and 25 automated tests.
 
-## Decisions worth explaining
+## Interview walkthrough
 
-1. Start with a lexical baseline that can be inspected and evaluated before adding embeddings.
-2. Make the no-key path useful, while clearly distinguishing extractive retrieval from generative RAG.
-3. Keep source hashes, URLs and timestamps alongside chunks so answers can be traced and imports can be repeated safely.
-4. Treat remote text as untrusted data and narrow the importer to selected public hosts.
-5. Test provider failures and invalid citations rather than assuming every LLM response succeeds.
+1. Import a publisher PDF from the exact catalog. Explain size/page limits, text extraction and the absence of OCR.
+2. Show the SQLite schema, idempotent import and atomic stale-chunk replacement.
+3. Search with bank and reporting-year filters, then open an original PDF page.
+4. Compare banks: retrieval runs independently per bank; missing relevant passages prevent a comparison answer.
+5. Explain the difference between extractive mode and configured LLM generation. Show mocked provider tests and invalid-citation fallback.
+6. Discuss the real-report retrieval failure in EVALUATION.md. Propose a larger labeled benchmark before choosing embeddings/reranking.
 
-## What was verified
-
-17 local pytest cases cover persistence, index replacement, malformed queries, URL rejection, HTML extraction, end-to-end API behavior and mocked LLM generation/failure paths. Three synthetic retrieval smoke cases pass. A live FastAPI documentation import and browser query were checked. GitHub Actions runs pytest, the retrieval smoke evaluation and a Docker build.
-
-The live LLM path was tested with mocked HTTP responses, not a paid model call. Do not describe this as a deployed client system, a semantic retrieval model, or a production-quality RAG benchmark.
+This is personal project experience, not employment or a production banking system. No live paid LLM call or cloud deployment was performed. The 2/3 smoke result is too small to claim an accuracy rate on a CV.
